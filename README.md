@@ -54,8 +54,8 @@ SCRAPLING_COOKIE_FILE=./cookies.txt uvx --from git+https://github.com/ptbsare/sc
 |-----------|----------|---------|-------------|
 | `url` | ✅ | — | The URL to fetch |
 | `extraction_type` | | `"markdown"` | `"markdown"`, `"html"`, or `"text"` |
-| `wait` | | `1500` | Milliseconds to wait after page load for JS rendering |
-| `timeout` | | `60000` | Operation timeout in ms |
+| `wait` | | `3000` | Milliseconds to wait after page load for JS rendering |
+| `timeout` | | `90000` | Operation timeout in ms |
 
 **Returns:** `{ "status": int, "url": str, "content": list[str] }`
 

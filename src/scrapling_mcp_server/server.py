@@ -95,8 +95,8 @@ def _build_server() -> FastMCP:
     async def fetch(
         url: str,
         extraction_type: str = "markdown",
-        wait: float = 1500,
-        timeout: float = 60000,
+        wait: float = 3000,
+        timeout: float = 90000,
     ) -> dict:
         """Stealthy web fetch with anti-bot bypass.
 
@@ -113,8 +113,8 @@ def _build_server() -> FastMCP:
 
         :param url: The URL to fetch.
         :param extraction_type: "markdown" (default), "html", or "text".
-        :param wait: Milliseconds to wait after page load for JS rendering (default 1500).
-        :param timeout: Operation timeout in milliseconds (default 60000).
+        :param wait: Milliseconds to wait after page load for JS rendering (default 3000).
+        :param timeout: Operation timeout in milliseconds (default 90000).
         :returns: Dict with keys: status, url, content (list[str]).
         """
         from scrapling.fetchers.stealth_chrome import StealthyFetcher
