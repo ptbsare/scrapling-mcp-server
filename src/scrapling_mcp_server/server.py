@@ -117,6 +117,7 @@ def _build_server() -> FastMCP:
             "allow_webgl": True,
             "solve_cloudflare": solve_cloudflare,
             "block_ads": True,
+            "useragent": "MicroMessenger/8.0.34(0x16082222)",
         }
         if merged_cookies:
             kwargs["cookies"] = merged_cookies
