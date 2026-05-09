@@ -100,6 +100,8 @@ def _build_server() -> FastMCP:
         solve_cloudflare: bool = False,
     ) -> dict:
         """Fetch a URL with anti-bot bypass. Returns {status, url, content}."""
+        from scrapling.fetchers.stealth_chrome import StealthyFetcher
+
         merged_cookies = _load_cookies()
 
         # Mobile iPhone WeChat UA + headers to mimic WeChat built-in browser
