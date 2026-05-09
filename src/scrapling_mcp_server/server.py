@@ -101,8 +101,13 @@ def _build_server() -> FastMCP:
     ) -> dict:
         """Fetch a URL with anti-bot bypass. Returns {status, url, content}."""
         from scrapling.fetchers.stealth_chrome import StealthyFetcher
+        from scrapling.engines.toolbelt.fingerprints import generate_headers
 
         merged_cookies = _load_cookies()
+
+        # Auto-generate real browser UA, then append MicroMessenger suffix
+        auto_ua = generate_headers(browser_mode="chrome").get("User-Agent", "")
+        ua = f"{auto_ua} MicroMessenger/8.0.34(0x16082222)" if auto_ua else "MicroMessenger/8.0.34(0x16082222)"
 
         kwargs: dict = {
             "headless": True,
@@ -117,7 +122,7 @@ def _build_server() -> FastMCP:
             "allow_webgl": True,
             "solve_cloudflare": solve_cloudflare,
             "block_ads": True,
-            "useragent": "MicroMessenger/8.0.34(0x16082222)",
+            "useragent": ua,
         }
         if merged_cookies:
             kwargs["cookies"] = merged_cookies
