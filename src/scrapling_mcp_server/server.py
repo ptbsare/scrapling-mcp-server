@@ -114,7 +114,7 @@ def _build_server() -> FastMCP:
             "network_idle": False,
             "block_webrtc": True,
             "allow_webgl": True,
-            "solve_cloudflare": True,
+            "solve_cloudflare": False,
             "block_ads": True,
         }
         if merged_cookies:
