@@ -98,25 +98,7 @@ def _build_server() -> FastMCP:
         wait: float = 3000,
         timeout: float = 90000,
     ) -> dict:
-        """Stealthy web fetch with anti-bot bypass.
-
-        Uses Patchright + fingerprint spoofing + Cloudflare auto-solver.
-        Optimal anti-bot defaults are applied automatically:
-        - Cloudflare challenge solving enabled
-        - Canvas/WebRTC fingerprint protection
-        - Ad/tracker domain blocking
-        - Google referer header
-        - Real browser header generation via browserforge
-        - Unnecessary resource blocking (fonts/images/media)
-
-        Cookies: set SCRAPLING_COOKIE_FILE env var to a Netscape cookie.txt path.
-
-        :param url: The URL to fetch.
-        :param extraction_type: "markdown" (default), "html", or "text".
-        :param wait: Milliseconds to wait after page load for JS rendering (default 3000).
-        :param timeout: Operation timeout in milliseconds (default 90000).
-        :returns: Dict with keys: status, url, content (list[str]).
-        """
+        """Fetch a URL with anti-bot bypass. Returns {status, url, content}."""
         from scrapling.fetchers.stealth_chrome import StealthyFetcher
 
         merged_cookies = _load_cookies()
