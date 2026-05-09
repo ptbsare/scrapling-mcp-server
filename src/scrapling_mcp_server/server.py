@@ -111,7 +111,7 @@ def _build_server() -> FastMCP:
             "timeout": timeout,
             "hide_canvas": True,
             "disable_resources": True,
-            "network_idle": True,
+            "network_idle": False,
             "block_webrtc": True,
             "allow_webgl": True,
             "solve_cloudflare": True,
