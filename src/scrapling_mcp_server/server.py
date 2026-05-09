@@ -97,6 +97,7 @@ def _build_server() -> FastMCP:
         extraction_type: str = "markdown",
         wait: float = 3000,
         timeout: float = 90000,
+        solve_cloudflare: bool = False,
     ) -> dict:
         """Fetch a URL with anti-bot bypass. Returns {status, url, content}."""
         from scrapling.fetchers.stealth_chrome import StealthyFetcher
@@ -114,7 +115,7 @@ def _build_server() -> FastMCP:
             "network_idle": False,
             "block_webrtc": True,
             "allow_webgl": True,
-            "solve_cloudflare": False,
+            "solve_cloudflare": solve_cloudflare,
             "block_ads": True,
         }
         if merged_cookies:

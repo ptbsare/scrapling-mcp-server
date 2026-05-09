@@ -56,6 +56,7 @@ SCRAPLING_COOKIE_FILE=./cookies.txt uvx --from git+https://github.com/ptbsare/sc
 | `extraction_type` | | `"markdown"` | `"markdown"`, `"html"`, or `"text"` |
 | `wait` | | `3000` | Milliseconds to wait after page load for JS rendering |
 | `timeout` | | `90000` | Operation timeout in ms |
+| `solve_cloudflare` | | `false` | Auto-solve Cloudflare challenges (adds ~5s overhead) |
 
 **Returns:** `{ "status": int, "url": str, "content": list[str] }`
 
@@ -65,7 +66,6 @@ These are applied automatically and not exposed as parameters:
 
 | Setting | Value | Why |
 |---------|-------|-----|
-| `solve_cloudflare` | `true` | Auto-solve Turnstile/Interstitial challenges |
 | `hide_canvas` | `true` | Randomize canvas fingerprint |
 | `block_webrtc` | `true` | Prevent WebRTC IP leak |
 | `disable_resources` | `true` | Block fonts/images/media for speed |
