@@ -100,14 +100,18 @@ def _build_server() -> FastMCP:
         solve_cloudflare: bool = False,
     ) -> dict:
         """Fetch a URL with anti-bot bypass. Returns {status, url, content}."""
-        from scrapling.fetchers.stealth_chrome import StealthyFetcher
-        from scrapling.engines.toolbelt.fingerprints import generate_headers
-
         merged_cookies = _load_cookies()
 
-        # Auto-generate real browser UA, then append MicroMessenger suffix
-        auto_ua = generate_headers(browser_mode="chrome").get("User-Agent", "")
-        ua = f"{auto_ua} MicroMessenger/8.0.34(0x16082222)" if auto_ua else "MicroMessenger/8.0.34(0x16082222)"
+        # Mobile iPhone WeChat UA + headers to mimic WeChat built-in browser
+        ua = (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) "
+            "AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 "
+            "MicroMessenger/8.0.34(0x16082222) NetType/WIFI Language/zh_CN"
+        )
+        extra_headers = {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+        }
 
         kwargs: dict = {
             "headless": True,
@@ -123,6 +127,7 @@ def _build_server() -> FastMCP:
             "solve_cloudflare": solve_cloudflare,
             "block_ads": True,
             "useragent": ua,
+            "extra_headers": extra_headers,
         }
         if merged_cookies:
             kwargs["cookies"] = merged_cookies
