@@ -1229,6 +1229,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "markdownify", specifier = ">=1.2.0" },
+    { name = "mcp", specifier = ">=1.0.0,<2.0.0" },
     { name = "scrapling", extras = ["ai"], specifier = ">=0.4.7" },
 ]
 
